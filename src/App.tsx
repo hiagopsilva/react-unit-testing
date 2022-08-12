@@ -1,11 +1,22 @@
 import { useState } from 'react'
 
 function App() {
+  const [list, setList] = useState(['Hiago', 'Diego', 'Larissa']);
+  const [newItem, setNewItem] = useState('');
+
+  function addToList() {
+    setList(state => [...state, newItem])
+  }
 
   return (
-    <div className="App">
-     hello world
-    </div>
+    <>
+    <input type="text" onChange={e => setNewItem(e.target.value)} />
+      <button onClick={addToList}>Adicionar</button>
+
+      <ul>
+        {list.map(item => (<li key={item}>{item}</li>))}
+      </ul>
+    </>
   )
 }
 
