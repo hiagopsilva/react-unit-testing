@@ -12,13 +12,17 @@ describe('App Component', () => {
     expect(getByText('Larissa')).toBeInTheDocument()
   });
 
-  it('should be able to add new item to the list', () => {
-    const { getByText } = render(<App />)
+  it('should be able to add new item to the list', async () => {
+    const { findByText, getByText, getByPlaceholderText, debug } = render(<App />);
 
+    const inputElement = getByPlaceholderText('Novo item');
     const addButton = getByText('Adicionar');
 
-    userEvent.click(addButton);
+    await userEvent.type(inputElement, 'Novo');
+    await userEvent.click(addButton);
 
-    expect(getByText('Novo')).toBeInTheDocument()
+    debug()
+
+    expect(await findByText('Novo')).toBeInTheDocument()
   });
 });

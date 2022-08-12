@@ -10,7 +10,11 @@ function App() {
 
   return (
     <>
-    <input type="text" onChange={e => setNewItem(e.target.value)} />
+      <input 
+        type="text" 
+        onChange={e => setNewItem(e.target.value)}
+        placeholder="Novo item"
+      />
       <button onClick={addToList}>Adicionar</button>
 
       <ul>
